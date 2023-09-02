@@ -4,7 +4,7 @@
 
 #jest cache
 #
-.jest/cache
+.jest/
 
 # node.js
 #
