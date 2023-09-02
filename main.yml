@@ -1,0 +1,39 @@
+name: CI/CD for React Native
+
+on:
+  push:
+    branches:
+      - main  # Replace with your main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.14.0'  # Adjust to your Node.js version
+
+      - name: Install dependencies
+        run: npm install  # or use 'yarn install' if you prefer yarn
+
+      - name: Build and Test
+        run: |
+          # Build the React Native app (replace 'android' and 'ios' with your platform names)
+          npx react-native build android
+          npx react-native build ios
+
+          # Run tests (modify the test command as needed)
+          npm test
+
+      - name: Upload test coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage  # Modify the path to your test coverage reports
+
+  # Add deployment steps here if needed
