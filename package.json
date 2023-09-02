@@ -1,6 +1,6 @@
 {
   "name": "react-native-khaled-salem-dropdown",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Native custom dropdown component",
   "main": "index.ts",
   "types": "index.d.ts",
