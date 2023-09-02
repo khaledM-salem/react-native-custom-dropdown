@@ -1,9 +1,9 @@
-name: CI/CD for React Native
+name: Code Coverage
 
 on:
   push:
     branches:
-      - main  # Replace with your main branch name
+      - main # Modify this to your main branch name
 
 jobs:
   build:
@@ -13,27 +13,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16.14.0'  # Adjust to your Node.js version
+          node-version: '16.14.0'
 
       - name: Install dependencies
-        run: npm install  # or use 'yarn install' if you prefer yarn
+        run: npm install
 
-      - name: Build and Test
-        run: |
-          # Build the React Native app (replace 'android' and 'ios' with your platform names)
-          npx react-native build android
-          npx react-native build ios
+      - name: Run tests and generate code coverage
+        run: npm test -- --coverage
 
-          # Run tests (modify the test command as needed)
-          npm test
-
-      - name: Upload test coverage
-        uses: actions/upload-artifact@v2
+      - name: Publish code coverage to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: coverage
-          path: coverage  # Modify the path to your test coverage reports
-
-  # Add deployment steps here if needed
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage/lcov-report
