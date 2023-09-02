@@ -17,17 +17,10 @@ export interface DropdownProps {
   left?: number; // Custom left style
   right?: number; // Custom right style
   zIndex?: number; // Custom zIndex style
+  backgroundColor?: string;
 }
 
-interface DropdownContainerProps extends DropdownProps {
-  // Set default values for custom styles
-  top?: number;
-  left?: number;
-  right?: number;
-  zIndex?: number;
-}
-
-const DropdownContainer: React.FC<DropdownContainerProps> = (props) => {
+const DropdownContainer: React.FC<DropdownProps> = (props) => {
   const {
     data,
     isDropdownOpen,
@@ -36,6 +29,7 @@ const DropdownContainer: React.FC<DropdownContainerProps> = (props) => {
     left = 0, // Default value
     right = undefined, // Default value
     zIndex = 10, // Default value
+    backgroundColor = '#ffffff'
   } = props;
 
   if (!isDropdownOpen) {
@@ -51,9 +45,15 @@ const DropdownContainer: React.FC<DropdownContainerProps> = (props) => {
     { zIndex },
   ]);
 
+  // Apply custom styles to the dropdown ScrollView component
+  const dropdownStyles = StyleSheet.flatten([
+    styles.dropdown,
+    { backgroundColor },
+  ]);
+
   return (
     <View style={containerStyles}>
-      <ScrollView style={styles.dropdown}>
+      <ScrollView style={dropdownStyles}>
         {Array.from(data).map((item, index) => (
           <TouchableOpacity
             key={index}
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   dropdown: {
-    backgroundColor: 'white',
     padding: 10,
     borderRadius: 5,
     elevation: 3,
