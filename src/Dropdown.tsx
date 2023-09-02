@@ -9,55 +9,75 @@ import {
   ViewStyle,
 } from 'react-native';
 
-
 export interface DropdownProps {
-    data: Set<string>;
-    isDropdownOpen: boolean;
-    handleDataChange: (item: string) => void;
-    style?: StyleProp<ViewStyle>; // Accept a custom style prop
-  }
+  data: Set<string>;
+  isDropdownOpen: boolean;
+  handleDataChange: (item: string) => void;
+  top?: number; // Custom top style
+  left?: number; // Custom left style
+  right?: number; // Custom right style
+  zIndex?: number; // Custom zIndex style
+}
 
-const Dropdown: React.FC<DropdownProps> = (props) => {
+interface DropdownContainerProps extends DropdownProps {
+  // Set default values for custom styles
+  top?: number;
+  left?: number;
+  right?: number;
+  zIndex?: number;
+}
+
+const DropdownContainer: React.FC<DropdownContainerProps> = (props) => {
   const {
     data,
     isDropdownOpen,
     handleDataChange,
-    style, // Accept custom styles
+    top = 0, // Default value
+    left = 0, // Default value
+    right = undefined, // Default value
+    zIndex = 10, // Default value
   } = props;
 
   if (!isDropdownOpen) {
     return null;
   }
 
-  // Merge custom styles with default styles
-  const dropdownStyles = StyleSheet.flatten([styles.dropdown, style]);
+  // Apply custom styles to the container View component
+  const containerStyles = StyleSheet.flatten([
+    styles.container,
+    { top },
+    { left },
+    { right },
+    { zIndex },
+  ]);
 
   return (
-    <ScrollView style={dropdownStyles}>
-      {Array.from(data).map((item, index) => (
-        <TouchableOpacity
-          key={index}
-          onPress={() => handleDataChange(item)}>
-          <Text>{item}</Text>
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+    <View style={containerStyles}>
+      <ScrollView style={styles.dropdown}>
+        {Array.from(data).map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => handleDataChange(item)}>
+            <Text>{item}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  dropdown: {
+  container: {
     position: 'absolute',
-    top: 40,
-    left: 10,
+  },
+  dropdown: {
     backgroundColor: 'white',
     padding: 10,
     borderRadius: 5,
     elevation: 3,
     maxHeight: 200,
     zIndex: 2,
-    overflow: 'scroll',
   },
 });
 
-export default Dropdown;
+export default DropdownContainer;
