@@ -1,4 +1,4 @@
-
+```markdown
 # React Native Custom Dropdown
 
 React Native Custom Dropdown is a versatile component that allows you to create customized dropdown menus in your React Native applications.
@@ -28,11 +28,11 @@ To use the Dropdown component in your React Native application, follow these ste
      data={uniqueCategories}
      isDropdownOpen={isDropdownOpen}
      handleDataChange={handleCategoryChange}
+     top={40}
+     left={10}
+     zIndex={2}
      style={{
-       top: 40,
-       left: 10,
        backgroundColor: 'white',
-       zIndex: 2,
        padding: 10,
      }}
    />
@@ -41,7 +41,11 @@ To use the Dropdown component in your React Native application, follow these ste
    - `data`: An array of unique categories or items.
    - `isDropdownOpen`: A boolean indicating whether the dropdown should be open.
    - `handleDataChange`: A callback function to handle changes when an item is selected.
-   - `style`: Accepts custom styles for the dropdown (e.g., `top`, `left`, `backgroundColor`, `zIndex`, `padding`).
+   - `top`: Custom top style for the dropdown.
+   - `left`: Custom left style for the dropdown.
+   - `right`: Custom right style for the dropdown.
+   - `zIndex`: Custom zIndex style for the dropdown.
+   - `style`: Accepts additional custom styles for the dropdown (e.g., `backgroundColor`, `padding`).
 
 3. Customize the appearance and behavior of the dropdown according to your application's needs.
 
@@ -74,13 +78,10 @@ const App = () => {
         data={uniqueCategories}
         isDropdownOpen={isDropdownOpen}
         handleCategoryChange={handleCategoryChange}
-        style={{
-          top: 40,
-          left: 10,
-          backgroundColor: 'white',
-          zIndex: 2,
-          padding: 10,
-        }}
+        top={40}
+        left={10}
+        zIndex={2}
+        backgroundColor={'white'}
       />
       <Text>Selected Category: {selectedCategory}</Text>
     </View>
@@ -112,12 +113,31 @@ A boolean indicating whether the dropdown should be open.
 
 A callback function that gets called when an item is selected from the dropdown.
 
-### `style` (Object)
+### `top` (Number)
 
-Accepts custom styles to customize the appearance of the dropdown.
+Custom top style for the dropdown.
+
+### `left` (Number)
+
+Custom left style for the dropdown.
+
+### `right` (Number)
+
+Custom right style for the dropdown.
+
+### `zIndex` (Number)
+
+Custom zIndex style for the dropdown.
+
+
+### `backgroundColor` (String)
+
+Custom backgroundColor style for the dropdown.
+
 
 ## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
 ![Coverage](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=coverage&query=%24.total.percentage&url=https%3A%2F%2Fraw.githubusercontent.com%2FkhaledM-salem%2Freact-native-custom-dropdown%2Fmain%2Fcoverage%2Fcoverage-final.json)
+```
