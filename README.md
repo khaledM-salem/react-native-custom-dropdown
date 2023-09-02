@@ -119,3 +119,5 @@ Accepts custom styles to customize the appearance of the dropdown.
 ## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+
+![Coverage](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=coverage&query=%24.total.percentage&url=https%3A%2F%2Fraw.githubusercontent.com%2FUSERNAME%2FREPO%2Fmain%2Fcoverage%2Fclover.xml.json)
