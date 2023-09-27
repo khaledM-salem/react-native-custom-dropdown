@@ -25,7 +25,7 @@ jobs:
         run: npm install -g react-test-renderer
 
       - name: Run tests and generate code coverage
-        run: npm test -- --coverage
+        run: npm test --coverage
 
       - name: Publish code coverage to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
