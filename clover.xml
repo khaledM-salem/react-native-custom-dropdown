@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1695860917142" clover="3.2.0">
-  <project timestamp="1695860917142" name="All files">
+<coverage generated="1695861452180" clover="3.2.0">
+  <project timestamp="1695861452180" name="All files">
     <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3" elements="20" coveredelements="20" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
     <file name="Dropdown.tsx" path="/home/runner/work/react-native-custom-dropdown/react-native-custom-dropdown/src/Dropdown.tsx">
       <metrics statements="10" coveredstatements="10" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
