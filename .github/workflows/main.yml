@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - coverageReport
 
 jobs:
   build:
