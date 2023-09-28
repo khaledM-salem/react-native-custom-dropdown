@@ -27,8 +27,14 @@ jobs:
       - name: Run tests and generate code coverage
         run: npm test --coverage
 
+      - name: Create coverage directory
+        run: mkdir -p coverage
+
+      - name: Copy coverage report to directory
+        run: cp -r ./coverage/lcov-report/* coverage/
+
       - name: Publish code coverage to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coverage/lcov-report
+          publish_dir: ./coverage
