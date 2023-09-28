@@ -1,4 +1,6 @@
 module.exports = {
   preset: 'react-native',
-  "coverageReporters": ["json", "lcov", "text", "clover"]
+  collectCoverage: true,
+  "coverageReporters": ["json", "lcov", "text", "clover"],
+  coverageDirectory: 'coverage'
 }
